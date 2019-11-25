@@ -1,6 +1,6 @@
 package com.jiguang.myshopplus.provider.mapper;
 
-import com.jiguang.myshopplus.provider.domain.UmsAdmin;
+import com.jiguang.myshopplus.provider.api.domain.UmsAdmin;
 import tk.mybatis.mapper.MyMapper;
 
 /**

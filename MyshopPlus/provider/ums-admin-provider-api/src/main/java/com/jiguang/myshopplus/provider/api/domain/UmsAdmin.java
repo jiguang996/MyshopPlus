@@ -1,4 +1,4 @@
-package com.jiguang.myshopplus.provider.domain;
+package com.jiguang.myshopplus.provider.api.domain;
 
 import lombok.Data;
 
@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * 系统用户
  * @Author ji
  * @Date 2019/11/24 20:09
  * @Version 1.0

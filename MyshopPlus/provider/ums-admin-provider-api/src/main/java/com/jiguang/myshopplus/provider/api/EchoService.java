@@ -1,4 +1,4 @@
-package com.jigunag.myshopplus.provider.api;
+package com.jiguang.myshopplus.provider.api;
 
 /**
  * @Author ji
