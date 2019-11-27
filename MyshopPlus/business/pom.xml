@@ -22,8 +22,39 @@
             <email>852468774@qq.com</email>
         </developer>
     </developers>
+    <dependencies>
+        <!-- Commons -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+        <!-- Projects -->
+
+        <dependency>
+            <groupId>com.jiguang.myshopplus</groupId>
+            <artifactId>commons-dto</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jiguang.myshopplus</groupId>
+            <artifactId>commons-utils</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.jiguang.myshopplus</groupId>-->
+<!--            <artifactId>configuration-feign</artifactId>-->
+<!--            <version>${project.parent.version}</version>-->
+<!--        </dependency>-->
+    </dependencies>
+
+
     <modules>
         <module>business-reg</module>
         <module>business-oauth2</module>
+        <module>business-profile</module>
     </modules>
 </project>

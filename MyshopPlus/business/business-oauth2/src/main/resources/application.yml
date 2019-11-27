@@ -1,6 +1,6 @@
 spring:
   application:
-    name: business-reg
+    name: business-oauth2
   main:
     allow-bean-definition-overriding: true
   jackson:
@@ -12,7 +12,7 @@ spring:
         server-addr: 192.168.6.101:8848
 dubbo:
   scan:
-    base-packages: com.jiguang.myshopplus.business.controller
+    base-packages: com.jiguang.myshopplus.business.controller , com.jiguang.myshopplus.provider.api
   protocol:
     name: dubbo
     port: -1
@@ -20,6 +20,12 @@ dubbo:
   registry:
     address: nacos://192.168.6.101
     port: 8848
+##开启feign的OKhttp方式
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
 server:
   # ${random.int[9000,9999]} 随机端口
   port: 9001
@@ -28,3 +34,9 @@ management:
     web:
       exposure:
         include: "*"
+
+business:
+  oauth2:
+    grant_type: password
+    client_id: client
+    client_secret: secret

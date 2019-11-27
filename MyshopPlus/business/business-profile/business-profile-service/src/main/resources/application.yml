@@ -1,6 +1,6 @@
 spring:
   application:
-    name: business-reg
+    name: business-profile
   main:
     allow-bean-definition-overriding: true
   jackson:
@@ -10,6 +10,15 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.6.101:8848
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: http://localhost:9001/oauth/token
+      user-authorization-uri: http://localhost:9001/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:9001/oauth/check_token
 dubbo:
   scan:
     base-packages: com.jiguang.myshopplus.business.controller
@@ -21,8 +30,7 @@ dubbo:
     address: nacos://192.168.6.101
     port: 8848
 server:
-  # ${random.int[9000,9999]} 随机端口
-  port: 9000
+  port: 9002
 management:
   endpoints:
     web:

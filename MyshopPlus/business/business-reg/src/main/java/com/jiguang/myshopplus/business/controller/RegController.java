@@ -11,15 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-
 /**
  * 用户注册。
  * @Author ji
  * @Date 2019/11/25 14:45
  * @Version 1.0
  */
-@CrossOrigin(origins = "*",maxAge = 3600)
 @RestController
 @RequestMapping(value = "reg")
 public class RegController {

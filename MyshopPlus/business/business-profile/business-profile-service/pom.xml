@@ -101,14 +101,23 @@
             <artifactId>spring-context-support</artifactId>
         </dependency>
         <!-- Projects -->
-
-
+        <dependency>
+            <groupId>com.jiguang.myshopplus</groupId>
+            <artifactId>commons-dto</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jiguang.myshopplus</groupId>
+            <artifactId>business-profile-feign</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.jiguang.myshopplus</groupId>
             <artifactId>ums-admin-provider-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>

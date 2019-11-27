@@ -1,5 +1,6 @@
 package com.jiguang.myshopplus.provider.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -18,6 +19,9 @@ import java.util.Date;
 @Data
 @Table(name = "ums_admin")
 public class UmsAdmin implements Serializable {
+
+    private static final long serialVersionUID = 2585407149704421278L;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "JDBC")
@@ -56,12 +60,14 @@ public class UmsAdmin implements Serializable {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "create_time")
     private Date createTime;
 
     /**
      * 最后登录时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "login_time")
     private Date loginTime;
 
@@ -71,5 +77,4 @@ public class UmsAdmin implements Serializable {
     @Column(name = "`status`")
     private Integer status;
 
-    private static final long serialVersionUID = 1L;
 }

@@ -95,23 +95,15 @@
             <groupId>com.alibaba.spring</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <!-- Only needed at compile time -->
-            <scope>compile</scope>
-            <optional>true</optional>
-        </dependency>
         <!-- Projects -->
-
         <dependency>
             <groupId>com.jiguang.myshopplus</groupId>
-            <artifactId>ums-admin-provider-api</artifactId>
+            <artifactId>commons-dto</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jiguang.myshopplus</groupId>
-            <artifactId>commons-dto</artifactId>
+            <artifactId>ums-admin-provider-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>

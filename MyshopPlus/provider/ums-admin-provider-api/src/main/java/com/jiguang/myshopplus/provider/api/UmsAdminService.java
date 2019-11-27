@@ -28,5 +28,12 @@ public interface UmsAdminService {
      * @return {@link UmsAdmin}
      */
     UmsAdmin get(UmsAdmin umsAdmin);
+
+    /**
+     * 更新用户
+     * @param umsAdmin {@link UmsAdmin}
+     * @return {@link UmsAdmin}
+     */
+    int update(UmsAdmin umsAdmin);
 }
 

@@ -41,6 +41,16 @@ public class UmsServiceImpl  implements UmsAdminService {
         return umsAdminMapper.selectOne(umsAdmin);
     }
 
+    @Override
+    public int update(UmsAdmin umsAdmin) {
+        UmsAdmin oldUmsAdmin = get(umsAdmin.getUsername());
+        oldUmsAdmin.setEmail(umsAdmin.getEmail());
+        oldUmsAdmin.setNickName(umsAdmin.getNickName());
+        oldUmsAdmin.setNote(umsAdmin.getNote());
+        oldUmsAdmin.setStatus(umsAdmin.getStatus());
+        return  umsAdminMapper.updateByPrimaryKey(oldUmsAdmin);
+    }
+
     /**
      * 初始化用户对象
      * @param umsAdmin {@link  UmsAdmin}
