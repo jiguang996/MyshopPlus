@@ -51,7 +51,7 @@ public class ProfileController {
     @GetMapping(value = "info/{username}")
     @SentinelResource(value = "info", fallback = "infoFallback", fallbackClass = ProfileControllerFallback.class)
     public ResponseResult<UmsAdminDTO> info(@PathVariable String username) {
-        UmsAdmin umsAdmin = umsAdminService.get(username);
+        UmsAdmin umsAdmin = umsAdminService.getByUsername(username);
         UmsAdminDTO dto = new UmsAdminDTO();
         BeanUtils.copyProperties(umsAdmin, dto);
         return new ResponseResult<UmsAdminDTO>(ResponseResult.CodeStatus.OK, "获取个人信息", dto);
@@ -88,7 +88,7 @@ public class ProfileController {
      */
     @PostMapping(value = "modify/password")
     public ResponseResult<Void> modifyPassword(@RequestBody PasswordParam passwordParam) {
-        UmsAdmin umsAdmin = umsAdminService.get(passwordParam.getUsername());
+        UmsAdmin umsAdmin = umsAdminService.getByUsername(passwordParam.getUsername());
 
         // 旧密码正确
         if (passwordEncoder.matches(passwordParam.getOldPassword(), umsAdmin.getPassword())) {

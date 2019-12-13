@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funtl.myshop.plus.provider.mapper.PmsAlbumPicMapper">
+  <resultMap id="BaseResultMap" type="com.funtl.myshop.plus.provider.domain.PmsAlbumPic">
+    <!--@mbg.generated generated on Sat Dec 14 00:00:32 CST 2019.-->
+    <!--@Table pms_album_pic-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="album_id" jdbcType="BIGINT" property="albumId" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Sat Dec 14 00:00:32 CST 2019.-->
+    id, album_id, pic
+  </sql>
+</mapper>

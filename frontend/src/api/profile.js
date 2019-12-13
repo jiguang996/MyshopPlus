@@ -2,38 +2,42 @@ import request from '@/utils/request'
 
 /**
  * 获取个人信息
- * @param username 用户名
+ * @param username
  */
 export function info(username) {
   return request({
-    url: '/profile/info/' + username,
-    method: 'get'
+    url: 'profile/info/'+username,
+    method: 'get',
   })
 }
 
 /**
  * 更新个人信息
- * @param data
+ * @param username
  */
 export function update(data) {
   return request({
-    url: '/profile/update',
+    url: 'profile/update/',
     method: 'post',
     data
   })
 }
 
 /**
- * 更新密码
- * @param data
+ * 修改密码
+ * @param password
  */
 export function modifyPassword(data) {
   return request({
-    url: '/profile/modify/password',
+    url: 'profile/modify/password',
     method: 'post',
     data
   })
 }
+
+
+
+
 
 /**
  * 更新头像

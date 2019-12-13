@@ -2,6 +2,8 @@ package com.funtl.myshop.plus.provider.api;
 
 import com.funtl.myshop.plus.provider.domain.UmsAdmin;
 
+import java.util.List;
+
 /**
  * 用户管理服务
  * <p>
@@ -24,12 +26,42 @@ public interface UmsAdminService {
     int insert(UmsAdmin umsAdmin);
 
     /**
-     * 获取用户
+     * 根据用户名查询用户
      *
      * @param username 用户名
      * @return {@link UmsAdmin}
      */
-    UmsAdmin get(String username);
+    UmsAdmin getByUsername(String username);
+
+    /**
+     * 根据用户名查询用户
+     *
+     * @param email 用户名
+     * @return {@link UmsAdmin}
+     */
+    UmsAdmin getByEmail(String email);
+
+    /**
+     * 根据OpenId查询用户
+     *
+     * @param OpenId 用户名
+     * @return {@link UmsAdmin}
+     */
+    UmsAdmin getByOpenId(String OpenId);
+
+    /**
+     * 根据用户昵称查询用户
+     *
+     * @param nickname 用户名
+     * @return {@link UmsAdmin}
+     */
+    UmsAdmin getByNickname(String nickname);
+
+    /**
+     * 获取所有用户
+     * @return
+     */
+    List<UmsAdmin>  getAllUsers();
 
     /**
      * 获取用户
@@ -67,4 +99,11 @@ public interface UmsAdminService {
      * @return {@code int} 大于 0 则表示更新成功
      */
     int modifyIcon(String username, String path);
+
+    /**
+     * 删除用户
+     * @param username
+     * @return{@code int} 大于 0 则表示删除成功
+     */
+    int deleteUser(String username);
 }

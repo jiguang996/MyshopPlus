@@ -102,5 +102,9 @@
         <module>provider-admin-service</module>
         <module>provider-admin-login-log-api</module>
         <module>provider-admin-login-log-service</module>
+        <module>provider-product-api</module>
+        <module>provider-product-service</module>
+        <module>provider-product-operate-log-api</module>
+        <module>provider-product-operate-log-service</module>
     </modules>
 </project>

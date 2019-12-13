@@ -4,11 +4,11 @@ base:
       hostname: localhost
       port: 9001
     nacos:
-      hostname: nacos.funtl.com
-      port: 80
-    rocketmq:
-      hostname: rocketmq.funtl.com
-      port: 9876
+      hostname: 192.168.6.101
+      port: 8848
+    rabbitmq:
+      hostname: 192.168.6.101
+      port: 15672
 
 spring:
   application:
@@ -18,17 +18,15 @@ spring:
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
+  rabbitmq:
+    host: 192.168.6.101
+    port: 5672
+    username: admin
+    password: admin
   cloud:
     nacos:
       discovery:
         server-addr: ${base.config.nacos.hostname}:${base.config.nacos.port}
-    stream:
-      rocketmq:
-        binder:
-          name-server: ${base.config.rocketmq.hostname}:${base.config.rocketmq.port}
-      bindings:
-        admin-login-log-topic: {destination: admin-login-log-topic, content-type: application/json}
-
 dubbo:
   scan:
     base-packages: com.funtl.myshop.plus.cloud.producer

@@ -16,4 +16,5 @@ public class UmsAdminLoginLogDTO implements Serializable {
     private String ip;
     private String address;
     private String userAgent;
+
 }

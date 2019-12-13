@@ -196,7 +196,7 @@ public class OkHttpClientUtil {
             Iterator<String> iterator = bodyParams.keySet().iterator();
             String key = "";
             while (iterator.hasNext()) {
-                key = iterator.next().toString();
+                key = iterator.next();
                 formEncodingBuilder.add(key, bodyParams.get(key));
             }
         }

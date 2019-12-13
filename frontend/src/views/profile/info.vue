@@ -8,9 +8,10 @@
       :model="form"
       label-width="120px"
     >
+
       <el-input v-model="form.id" type="hidden" />
       <el-form-item label="头像">
-        <img :src="form.icon" width="60" height="60">
+          <img :src="form.icon" width="85" height="85">
       </el-form-item>
       <el-form-item label="账号">
         <el-input v-model="form.username" :disabled="true" />
@@ -44,50 +45,49 @@
 </template>
 
 <script>
-import { info, update } from '@/api/profile'
 
-export default {
-  name: 'ProfileInfo',
-  data() {
-    return {
-      formLoading: true,
-      form: {
-        id: '',
-        icon: '',
-        username: '',
-        email: '',
-        nickName: '',
-        note: '',
-        createTime: '',
-        loginTime: '',
-        status: ''
-      }
+    import { info ,update} from '@/api/profile'
+    export default {
+        name: "ProfileInfo" ,
+        data() {
+            return{
+                form:{
+                    id:'',
+                    icon: '',
+                    username: '',
+                    email: '',
+                    nickName: '',
+                    note: '',
+                    createTime: '',
+                    loginTime: '',
+                    status: ''
+                }
+            }
+        },
+        created() {
+            this.fetchData()
+        },
+        methods:{
+            fetchData() {
+                info(this.$store.getters.name).then(response => {
+                    this.form = response.data;
+                    this.formLoading=false
+                })
+            },
+            onSubmit(){
+                this.formLoading=true;
+                update(this.form).then(response =>{
+                    this.formLoading=false;
+                    this.$message({
+                        message: response.message,
+                        type: 'success'
+                    })
+                }).catch(()=>{
+                    this.formLoading=false
+                })
+            }
+        }
     }
-  },
-  created() {
-    this.fetchData()
-  },
-  methods: {
-    fetchData() {
-      info(this.$store.getters.name).then(response => {
-        this.form = response.data
-        this.formLoading = false
-      })
-    },
-    onSubmit() {
-      this.formLoading = true
-      update(this.form).then(response => {
-        this.formLoading = false
-        this.$message({
-          message: response.message,
-          type: 'success'
-        })
-      }).catch(() => {
-        this.formLoading = false
-      })
-    }
-  }
-}
 </script>
 
 <style scoped>

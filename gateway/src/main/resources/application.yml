@@ -1,8 +1,8 @@
 base:
   config:
     nacos:
-      hostname: nacos.funtl.com
-      port: 80
+      hostname: 192.168.6.101
+      port: 8848
 
 spring:
   application:
@@ -39,6 +39,18 @@ spring:
           uri: lb://business-profile
           predicates:
             - Path=/api/profile/**
+          filters:
+            - StripPrefix=1
+        - id: BUSINESS-USER
+          uri: lb://business-user
+          predicates:
+            - Path=/api/admin/**
+          filters:
+            - StripPrefix=1
+        - id: BUSINESS-PRODUCT
+          uri: lb://business-product
+          predicates:
+            - Path=/api/product/**
           filters:
             - StripPrefix=1
         - id: CLOUD-UPLOAD

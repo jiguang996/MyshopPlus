@@ -11,6 +11,7 @@ import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户管理服务
@@ -32,6 +33,11 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Resource
     private BCryptPasswordEncoder passwordEncoder;
 
+    /**
+     * 插入用户
+     * @param umsAdmin {@link UmsAdmin}
+     * @return
+     */
     @Override
     public int insert(UmsAdmin umsAdmin) {
         // 初始化用户对象
@@ -53,10 +59,56 @@ public class UmsAdminServiceImpl implements UmsAdminService {
      */
     @Override
     @SentinelResource(value = "getByUsername", fallback = "getByUsernameFallback", fallbackClass = UmsAdminServiceFallback.class)
-    public UmsAdmin get(String username) {
+    public UmsAdmin getByUsername(String username) {
         Example example = new Example(UmsAdmin.class);
         example.createCriteria().andEqualTo("username", username);
         return umsAdminMapper.selectOneByExample(example);
+    }
+
+
+    /**
+     * 根据email 查询用户
+     * @param email 用户名
+     * @return
+     */
+    @Override
+    public UmsAdmin getByEmail(String email) {
+        Example example=new Example(UmsAdmin.class);
+        example.createCriteria().andEqualTo("email", email);
+        return umsAdminMapper.selectOneByExample(example);
+    }
+
+    /**
+     * 根据id 查询
+     * @param OpenId 用户名
+     * @return
+     */
+    @Override
+    public UmsAdmin getByOpenId(String OpenId) {
+        Example example=new Example(UmsAdmin.class);
+        example.createCriteria().andEqualTo("id", OpenId);
+        return umsAdminMapper.selectOneByExample(example);
+    }
+
+    /**
+     * 根据Nickname 查询
+     * @param nickname 用户昵称
+     * @return
+     */
+    @Override
+    public UmsAdmin getByNickname(String nickname) {
+        Example example=new Example(UmsAdmin.class);
+        example.createCriteria().andEqualTo("nickName", nickname);
+        return umsAdminMapper.selectOneByExample(example);
+    }
+
+    /**
+     * 查询所有用户
+     * @return
+     */
+    @Override
+    public List<UmsAdmin> getAllUsers() {
+        return umsAdminMapper.selectAll();
     }
 
     @Override
@@ -67,7 +119,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Override
     public int update(UmsAdmin umsAdmin) {
         // 获取原始用户信息
-        UmsAdmin oldAdmin = get(umsAdmin.getUsername());
+        UmsAdmin oldAdmin = getByUsername(umsAdmin.getUsername());
 
         // 仅更新 邮箱、昵称、备注、状态
         oldAdmin.setEmail(umsAdmin.getEmail());
@@ -80,16 +132,23 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public int modifyPassword(String username, String password) {
-        UmsAdmin umsAdmin = get(username);
+        UmsAdmin umsAdmin = getByUsername(username);
         umsAdmin.setPassword(passwordEncoder.encode(password));
         return umsAdminMapper.updateByPrimaryKey(umsAdmin);
     }
 
     @Override
     public int modifyIcon(String username, String path) {
-        UmsAdmin umsAdmin = get(username);
+        UmsAdmin umsAdmin = getByUsername(username);
         umsAdmin.setIcon(path);
         return umsAdminMapper.updateByPrimaryKey(umsAdmin);
+    }
+
+    @Override
+    public int deleteUser(String username) {
+        Example example=new Example(UmsAdmin.class);
+        example.createCriteria().andEqualTo("username", username);
+        return umsAdminMapper.deleteByExample(example);
     }
 
     /**

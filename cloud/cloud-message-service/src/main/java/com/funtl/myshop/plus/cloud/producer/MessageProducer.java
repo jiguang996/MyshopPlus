@@ -1,6 +1,7 @@
 package com.funtl.myshop.plus.cloud.producer;
 
 import com.funtl.myshop.plus.cloud.api.MessageService;
+import com.funtl.myshop.plus.cloud.dto.PmsProductOperateLogDTO;
 import com.funtl.myshop.plus.cloud.dto.UmsAdminLoginLogDTO;
 import com.funtl.myshop.plus.cloud.message.MessageSource;
 import org.apache.dubbo.config.annotation.Service;
@@ -36,5 +37,10 @@ public class MessageProducer implements MessageService {
     @Override
     public boolean sendAdminLoginLog(UmsAdminLoginLogDTO dto) {
         return source.adminLoginLog().send(MessageBuilder.withPayload(dto).build());
+    }
+
+    @Override
+    public boolean sendProductOperateLog(PmsProductOperateLogDTO pmsProductOperateLogDTO) {
+        return source.productOperateLog().send(MessageBuilder.withPayload(pmsProductOperateLogDTO).build());
     }
 }

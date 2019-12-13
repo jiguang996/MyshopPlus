@@ -29,16 +29,13 @@ import java.util.List;
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private static final String USERNAME = "admin";
-    private static final String PASSWORD = "$2a$10$YNUV/BtCel2orbhgrxyPJeljdKVty6yTAL.Cj4v3XhwHWXBkgyPYW";
-
     @Reference(version = "1.0.0")
     private UmsAdminService umsAdminService;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         // 查询用户
-        UmsAdmin umsAdmin = umsAdminService.get(s);
+        UmsAdmin umsAdmin = umsAdminService.getByUsername(s);
 
         // 默认所有用户拥有 USER 权限
         List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();

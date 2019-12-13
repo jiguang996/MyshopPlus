@@ -46,7 +46,7 @@ public class RegController {
 
             // 注册成功
             if (result > 0) {
-                UmsAdmin admin = umsAdminService.get(umsAdmin.getUsername());
+                UmsAdmin admin = umsAdminService.getByUsername(umsAdmin.getUsername());
                 return new ResponseResult<UmsAdmin>(HttpStatus.OK.value(), "用户注册成功", admin);
             }
         }
@@ -61,7 +61,7 @@ public class RegController {
      * @return 验证结果
      */
     private String validateReg(UmsAdmin umsAdmin) {
-        UmsAdmin admin = umsAdminService.get(umsAdmin.getUsername());
+        UmsAdmin admin = umsAdminService.getByUsername(umsAdmin.getUsername());
 
         if (admin != null) {
             return "用户名已存在，请重新输入";

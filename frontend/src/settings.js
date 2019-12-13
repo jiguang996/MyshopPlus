@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'MyShopPlus',
+  title: 'MyshopPlus',
 
   /**
    * @type {boolean} true | false
@@ -13,4 +13,4 @@ module.exports = {
    * @description Whether show the logo in sidebar
    */
   sidebarLogo: false
-}
+};

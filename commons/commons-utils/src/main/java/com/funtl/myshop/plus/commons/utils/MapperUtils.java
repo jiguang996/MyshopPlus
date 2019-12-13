@@ -173,7 +173,7 @@ public class MapperUtils {
      */
     public static <T> List<T> json2list(String jsonArrayStr, Class<T> clazz) throws Exception {
         JavaType javaType = getCollectionType(ArrayList.class, clazz);
-        List<T> list = (List<T>) objectMapper.readValue(jsonArrayStr, javaType);
+        List<T> list = objectMapper.readValue(jsonArrayStr, javaType);
         return list;
     }
 

@@ -172,7 +172,7 @@ public class LoginController {
      * @param request {@link HttpServletRequest}
      */
     private void sendAdminLoginLog(String username, HttpServletRequest request) {
-        UmsAdmin umsAdmin = umsAdminService.get(username);
+        UmsAdmin umsAdmin = umsAdminService.getByUsername(username);
 
         if (umsAdmin != null) {
             // 获取请求的用户代理信息
